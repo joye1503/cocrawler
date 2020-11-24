@@ -3,33 +3,24 @@ sudo: required
 dist: xenial
 
 python:
-#  - 3.5.3  # minimum for aiohttp=3 and async-timeout=3
-#  - 3.5
-  - 3.6.3  # geoip2 is >3.6
-  - 3.6
-  - 3.7
   - 3.8
-  - 3.9
-  - nightly
 
 matrix:
   fast_finish: true
   allow_failures:
-  - python: 3.9  # reppy build fail
-  - python: nightly  # reppy build fail
   - python: 3.8
     arch: arm64  # flakey
-  - python: 3.8
-    arch: s390x  # flakey
   include:
-  - python: 3.6.3
-    env: COCRAWLER_LOGLEVEL=DEBUG
-  - python: 3.6.3
-    env: PYTHONASYNCIODEBUG=1
   - python: 3.8
     arch: arm64
   - python: 3.8
-    arch: s390x
+    arch: amd64
+  - python: 3.8
+    arch: arm64-graviton2
+    dist: focal
+    group: edge
+    virt: vm
+    sudo: true
 
 git:
   depth: 9999
