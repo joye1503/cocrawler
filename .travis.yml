@@ -17,9 +17,9 @@ matrix:
     arch: amd64
   - python: 3.8
     arch: arm64-graviton2
-    dist: focal
+    dist: bionic
     group: edge
-    virt: vm
+    virt: lxd
     sudo: true
 
 git:
